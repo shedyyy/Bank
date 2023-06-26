@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<h1>Transfer Money</h1>
+
+<!-- if amount is larger then 10000 ask for description as well -->
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">My Balance</h5>
+        <p class="card-text">{{acc_bal}}</p>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div> -->
+</div>
+
+
+<form id="form" action="" method="post">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="amount">Amount*</label>
+    <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter amount" required>
+
+
+
+
+  </div>
+
+  <div class="form-group">
+    <label for="amount">Transfer To*</label>
+    <input type="text" class="form-control" id="amount" name="transferto" placeholder="Enter Iban" required>
+
+
+
+
+  </div>
+
+
+  <!-- <div id="description" class="form-group">
+    <label for="description">Description*<span class="" style="font-size: x-small;">(Description is required if amount >
+        10000)</span> </label>
+    {{form.description}}
+
+
+
+  </div> -->
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+<script>
+
+
+
+</script>
+
+
+
+
+{% endblock %}

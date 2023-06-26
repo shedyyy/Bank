@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+  <h1>What do you want to do?</h1>
+
+  <div class="d-flex ">
+        <a class="btn m-4 btn-outline-primary" href="/deposit">Deposit</a>
+        <a class="btn  m-4 btn-outline-primary" href="/transfer">Transfer</a>
+        <a class="btn m-4 btn-outline-primary" href="/transactions">Transactions</a>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">My Balance</h5>
+          <p class="card-text">{{acc_bal}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">My IBAN</h5>
+          <p class="card-text">{{request.user.iban}}</p>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div> -->
+  </div>
+
+
+
+ 
+{% endblock %}

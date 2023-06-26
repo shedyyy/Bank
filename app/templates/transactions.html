@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<h1>Tranactions</h1>
+
+{% include "partials/message.html" %}
+{% if transactions %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Status</th>
+
+      <th scope="col">Type</th>
+      {% if request.user.role == "staff" or request.user.is_superuser %}
+      <th>
+        Action
+      </th>
+      <th>
+        Description
+      </th>
+      {% endif %}
+      <th scope="col">From</th>
+      <th scope="col">To</th>
+      <th scope="col">Dated</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for t in transactions %}
+    <tr>
+      <th scope="row">{{t.id}}</th>
+      <td>{{t.amount}}</td>
+      <td>
+        <span class="badge text-bg-primary " style="text-transform: capitalize;">{{t.status}}</span>
+      </td>
+      <td style="text-transform: capitalize;">{{t.tx_type}}</td>
+      {% if request.user.role == "staff" or request.user.is_superuser %}
+        {% if t.status == "pending" %}
+        <td>
+          <a class="btn btn-outline-primary" href="/{{t.id}}/approve/">Approve</a>
+          <a class="btn btn-outline-danger" href="/{{t.id}}/reject/">Reject</a>
+        </td>
+        {% else %}
+        <td>
+
+          No Action Required
+        </td>
+          {% endif %}
+      {% endif %}
+      {% if request.user.role == "staff" or request.user.is_superuser %}
+      <td>
+        {{t.description}}
+      </td>
+      {% endif %}
+      <td>{{t.sender}}</td>
+      <td>{{t.receiver}}</td>
+      <td>{{t.created_at}}</td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No transactions yet.</p>
+{% endif %}
+
+{% endblock %}

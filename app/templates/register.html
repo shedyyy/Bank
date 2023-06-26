@@ -1,0 +1,152 @@
+{% extends "authbase.html" %}
+
+
+{% block content %}
+
+
+<main class="form-signin w-100 m-auto">
+    <form method="post">
+        {% csrf_token %}
+        <h1 class="h3 mb-3 fw-normal">Welcome to the bank</h1>
+
+        <h4 class="text-center">
+            Signup
+        </h4>
+
+        <div class="form-floating">
+            <label for="floatingInput">Name</label>
+            {{ form.username }}
+
+            {% if form.username.errors %}
+            {% for error in form.username.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="form-floating">
+            <label for="floatingInput">Email</label>
+            {{ form.email }}
+
+            {% if form.email.errors %}
+            {% for error in form.email.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="form-floating">
+            <label for="floatingInput">Password</label>
+            {{ form.password }}
+            {% if form.password.errors %}
+            {% for error in form.password.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+            {% endfor %}
+            {% endif %}
+
+        </div>
+
+        <div class="form-floating">
+            <label for="floatingInput">Surname</label>
+            {{ form.surname }}
+            {% if form.surname.errors %}
+            {% for error in form.surname.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="form-floating">
+            <label for="floatingInput">Date of birth</label>
+            {{ form.dob }}
+            {% if form.dob.errors %}
+            {% for error in form.dob.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="form-floating">
+            <label for="floatingInput">City</label>
+            {{ form.city }}
+            {% if form.city.errors %}
+            {% for error in form.city.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+            {% endfor %}
+            {% endif %}
+
+
+        </div>
+
+
+        <div class="form-floating">
+            <label for="floatingInput">Country</label>
+
+            {{ form.country }}
+            {% if form.country.errors %}
+            {% for error in form.country.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        {% include "partials/message.html" %}
+
+
+
+
+
+
+        <button class="btn btn-primary w-100 py-2 mt-2" type="submit">Sign Up</button>
+
+        <a href="/login" class="btn btn-link w-100 mt-4 py-2" type="submit">Already have an account? signin</a>
+
+
+    </form>
+</main>
+
+
+<style>
+    html,
+    body {
+        height: 100%;
+    }
+
+    .form-signin {
+        max-width: 330px;
+        padding: 1rem;
+    }
+
+    .form-signin .form-floating:focus-within {
+        z-index: 2;
+    }
+
+    .form-signin input[type="email"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .form-signin input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+</style>
+
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<h1>Deposit Money</h1>
+
+<!-- if amount is larger then 10000 ask for description as well -->
+
+
+
+<form id="form" action="" method="post">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="amount">Amount*</label>
+    {{form.amount}}
+
+    {% if form.amount.errors %}
+    {% for error in form.amount.errors %}
+    
+    <div class="alert alert-danger" role="alert">
+      {{error}}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+
+
+  </div>
+
+  <div id="description" class="form-group">
+    <label for="description">Description*<span class="" style="font-size: x-small;">(Description is required if amount > 10000)</span> </label>
+    {{form.description}}
+
+    {% if form.description.errors %}
+    {% for error in form.description.errors %}
+    
+    <div class="alert alert-danger" role="alert">
+      {{error}}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+  </div>
+  <div>
+    
+  </div>
+  <button type="submit"  class="btn btn-primary">Submit</button>
+</form>
+
+
+<script>
+  
+
+
+</script>
+
+
+
+
+{% endblock %}
